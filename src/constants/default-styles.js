@@ -5,8 +5,13 @@ import { colors } from "./colors";
 export const defaultStyles = StyleSheet.create({
   text: {
     color: colors.white,
-    fontWeight: "bold",
     fontFamily: "ConcertOne-Regular",
     fontSize: 16,
+  },
+  header: {
+    color: colors.white,
+    fontFamily: "ConcertOne-Regular",
+    fontSize: 20,
+    textTransform: "uppercase",
   },
 });

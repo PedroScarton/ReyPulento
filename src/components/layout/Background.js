@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, ImageBackground } from "react-native";
-import BackgroundImage from "../../../assets/images/background.jpg";
+import BackgroundImage from "../../../assets/images/background.png";
 
 const Background = ({ children }) => {
   return (

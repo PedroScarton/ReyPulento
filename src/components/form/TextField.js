@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, StyleSheet, Dimensions } from "react-native";
+import { TextInput, StyleSheet } from "react-native";
 
 import { colors } from "../../constants/colors";
 
@@ -17,11 +17,11 @@ const TextField = ({ placeholder, onChange, value }) => {
 
 const styles = StyleSheet.create({
   input: {
-    width: Dimensions.get("window").width,
+    flex: 1,
     backgroundColor: colors.white,
     fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 8,
     borderRadius: 6,
     fontFamily: "ConcertOne-Regular",
   },

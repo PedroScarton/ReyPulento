@@ -6,26 +6,20 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { colors } from "../../constants/colors";
 import { defaultStyles } from "../../constants/default-styles";
 
-const Chip = ({ onPress }) => {
+const Chip = ({ onPress, text }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={onPress}>
-        <View style={styles.button}>
-          <Text style={styles.text}>Hola</Text>
-          <MaterialIcons name="close" size={20} color={colors.black} />
-        </View>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.button}>
+        <Text style={styles.text}>{text}</Text>
+        <MaterialIcons name="close" size={20} color={colors.black} />
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    overflow: "hidden",
-    borderRadius: 6,
-  },
   button: {
+    borderRadius: 6,
     paddingVertical: 10,
     paddingHorizontal: 10,
     backgroundColor: colors.white,

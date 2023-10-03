@@ -11,7 +11,7 @@ export const defaultStyles = StyleSheet.create({
   header: {
     color: colors.white,
     fontFamily: "ConcertOne-Regular",
-    fontSize: 20,
+    fontSize: 16,
     textTransform: "uppercase",
   },
 });

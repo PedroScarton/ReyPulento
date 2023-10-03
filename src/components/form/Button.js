@@ -4,12 +4,19 @@ import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { defaultStyles } from "../../constants/default-styles";
 import { colors } from "../../constants/colors";
 
-const Button = ({ onPress, text, variant = "contained" }) => {
+const Button = ({ onPress, title, variant = "contained", textColor }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={{ ...styles.button, ...variants[variant] }}>
-          <Text style={styles.text}>{text}</Text>
+          <Text
+            style={{
+              ...styles.text,
+              ...(textColor ? { color: textColor } : {}),
+            }}
+          >
+            {title}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

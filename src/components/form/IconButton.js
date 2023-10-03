@@ -22,8 +22,8 @@ const IconButton = ({ onPress, icon, size, color, variant = "contained" }) => {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 6,
-    paddingVertical: 4,
-    paddingHorizontal: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
     justifyContent: "center",
     alignItems: "center",
   },

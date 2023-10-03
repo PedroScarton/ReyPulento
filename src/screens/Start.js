@@ -9,17 +9,18 @@ import Divider from "../components/ui/Divider";
 import Wrapper from "../components/layout/Wrapper";
 
 import Nicknames from "../components/Nicknames";
+import Chip from "../components/form/Chip";
 
 import { defaultStyles } from "../constants/default-styles";
-import Chip from "../components/form/Chip";
 
 const Start = () => {
   const [players, setPlayers] = useState(["Honersito", "Tu mamita"]);
   const [player, setPlayer] = useState("");
   const onAdd = useCallback(() => {
+    Keyboard.dismiss();
+    if (player.trim().length === 0) return;
     setPlayers((prev) => [...prev, player]);
     setPlayer("");
-    Keyboard.dismiss();
   }, [player]);
   const onRemove = (ply) => {
     setPlayers((prev) => prev.filter((player) => player !== ply));
@@ -34,13 +35,14 @@ const Start = () => {
         />
         <IconButton icon="add" size={28} onPress={onAdd} />
       </View>
-      <Nicknames setNames={setPlayers}/>
+      <Nicknames setNames={setPlayers} />
       <Divider />
       <Button
         title={"COMENZAR EL JUEGO"}
         onPress={() => console.log("start")}
+        disabled={true}
       />
-      <Text style={styles.header}>GENTE PULENTA</Text>
+      <Text style={styles.header}>GENTE PULENTA: {players.length}</Text>
       <View style={styles.players}>
         {players.map((ply) => (
           <Chip

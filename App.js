@@ -5,7 +5,7 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import AppSplashScreen from "./AppLoading";
 import Background from "./src/components/layout/Background";
-import Start from "./src/screens/Start";
+import Game from "./src/screens/Game";
 
 // Inicializa Firebase
 // if (!firebase.apps.length) {
@@ -17,7 +17,7 @@ export default function App() {
     <SafeAreaProvider>
       <AppSplashScreen>
         <Background>
-          <Start />
+          <Game />
         </Background>
       </AppSplashScreen>
     </SafeAreaProvider>

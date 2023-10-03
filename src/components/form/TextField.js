@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     fontSize: 16,
     paddingHorizontal: 8,
-    paddingVertical: 8,
+    paddingVertical: 12,
     borderRadius: 6,
     fontFamily: "ConcertOne-Regular",
   },

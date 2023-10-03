@@ -4,10 +4,10 @@ import { View, StyleSheet, Text } from "react-native";
 import { colors } from "../../constants/colors";
 import { defaultStyles } from "../../constants/default-styles";
 
-const Challenge = ({ challenge }) => {
+const TextCard = ({ content }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{challenge}</Text>
+      <Text style={styles.text}>{content}</Text>
     </View>
   );
 };
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Challenge;
+export default TextCard;

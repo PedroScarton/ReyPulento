@@ -4,11 +4,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Settings from "../Settings";
 
-const Wrapper = ({ children }) => {
+const Wrapper = ({ children, goBack }) => {
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.settings}>
-        <Settings />
+        <Settings goBack={goBack} />
       </View>
       <View style={styles.container}>{children}</View>
     </SafeAreaView>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    gap: 16
+    gap: 16,
   },
 });
 

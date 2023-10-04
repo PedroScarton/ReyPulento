@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Text, View, StyleSheet, Keyboard } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "../components/form/Button";
 import TextField from "../components/form/TextField";
@@ -14,17 +15,26 @@ import Chip from "../components/form/Chip";
 import { defaultStyles } from "../constants/default-styles";
 
 const Start = () => {
+  const navigation = useNavigation();
+  
   const [players, setPlayers] = useState(["Honersito", "Tu mamita"]);
   const [player, setPlayer] = useState("");
+
   const onAdd = useCallback(() => {
     Keyboard.dismiss();
     if (player.trim().length === 0) return;
     setPlayers((prev) => [...prev, player]);
     setPlayer("");
   }, [player]);
+
   const onRemove = (ply) => {
     setPlayers((prev) => prev.filter((player) => player !== ply));
   };
+
+  const onStart = useCallback(() => {
+    navigation.navigate("Game");
+  }, [players]);
+
   return (
     <Wrapper>
       <View style={styles.input}>
@@ -39,8 +49,8 @@ const Start = () => {
       <Divider />
       <Button
         title={"COMENZAR EL JUEGO"}
-        onPress={() => console.log("start")}
-        disabled={true}
+        onPress={onStart}
+        disabled={!players.length}
       />
       <Text style={styles.header}>GENTE PULENTA: {players.length}</Text>
       <View style={styles.players}>

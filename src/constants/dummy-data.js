@@ -1,0 +1,15 @@
+export const dummyChallenges = [
+  { id: "id1", type: "rule-grupal", content: "Si alguien dice la palabra 'beber', tiene que tomar un trago.", difficulty: 1, frequency: 2 },
+  { id: "id2", type: "rule-grupal", content: "Cuando alguien bebe, debe hacerlo con los codos pegados al cuerpo, imitando a un T-Rex.", difficulty: 1, frequency: 2 },
+  { id: "id3", type: "rule-grupal", content: "Todos deben hablar de sí mismos en tercera persona.", difficulty: 1, frequency: 2 },
+  { id: "id4", type: "rule-grupal", content: "Todos deben beber con su mano no dominante.", difficulty: 1, frequency: 2 },
+  { id: "id5", type: "challenge", content: "Bebe 1 trago", difficulty: 1, frequency: 2 },
+  { id: "id6", type: "challenge", content: "Bebe 2 tragos", difficulty: 1, frequency: 2 },
+  { id: "id7", type: "challenge", content: "Bebe 3 tragos", difficulty: 1, frequency: 2 },
+  { id: "id8", type: "challenge", content: "Bebe la cantidad que diga la persona de tu derecha", difficulty: 1, frequency: 2 },
+  { id: "id9", type: "rule-grupal", content: "Elige un acento y todos deben hablar con ese acento.", difficulty: 1, frequency: 2 },
+  { id: "id10", type: "rule-grupal", content: "Cuando beban, deben levantar el meñique. Quien olvide hacerlo debe beber otra vez.", difficulty: 1, frequency: 2 },
+  { id: "id11", type: "rule-grupal", content: "Está prohibido decir el nombre de cualquier persona en la mesa. Si alguien lo hace, debe beber.", difficulty: 1, frequency: 2 },
+  { id: "id12", type: "rule-individual", content: "debes hablar como un pirata.", difficulty: 1, frequency: 2 },
+  { id: "id13", type: "game", content: "Alguien empieza a hacer un ritmo con la mesa o un objeto cercano. El siguiente debe continuarla y añadir un sonido. Quien rompa el ritmo bebe.", difficulty: 1, frequency: 2 },
+];

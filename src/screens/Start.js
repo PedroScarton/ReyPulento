@@ -2,6 +2,8 @@ import React, { useCallback, useState } from "react";
 import { Text, View, StyleSheet, Keyboard } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import { useGame } from "../provider/GameProvider";
+
 import Button from "../components/form/Button";
 import TextField from "../components/form/TextField";
 import IconButton from "../components/form/IconButton";
@@ -16,7 +18,9 @@ import { defaultStyles } from "../constants/default-styles";
 
 const Start = () => {
   const navigation = useNavigation();
-  
+
+  const { onStart } = useGame();
+
   const [players, setPlayers] = useState(["Honersito", "Tu mamita"]);
   const [player, setPlayer] = useState("");
 
@@ -31,7 +35,8 @@ const Start = () => {
     setPlayers((prev) => prev.filter((player) => player !== ply));
   };
 
-  const onStart = useCallback(() => {
+  const onSubmit = useCallback(() => {
+    onStart(players);
     navigation.navigate("Game");
   }, [players]);
 
@@ -49,7 +54,7 @@ const Start = () => {
       <Divider />
       <Button
         title={"COMENZAR EL JUEGO"}
-        onPress={onStart}
+        onPress={onSubmit}
         disabled={!players.length}
       />
       <Text style={styles.header}>GENTE PULENTA: {players.length}</Text>

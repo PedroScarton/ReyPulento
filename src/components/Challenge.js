@@ -10,7 +10,7 @@ import { defaultStyles } from "../constants/default-styles";
 const Challenge = ({ onIncrease, onDecrease, player, challenge }) => {
   return (
     <>
-      <Text style={styles.header}>LE TOCA A {player}</Text>
+      <Text style={styles.header}>Turno de {player}</Text>
       <TextCard content={challenge} />
       <View style={styles.controls}>
         <View style={styles.btnContainer}>

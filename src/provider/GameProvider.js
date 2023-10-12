@@ -13,12 +13,15 @@ const RESET_GAME = "RESET_GAME";
 const START_GAME = "START_GAME";
 // TURN ACTIONS
 const NEXT_TURN = "NEXT_TURN";
+const UPDATE_AD_STATE = "UPDATE_AD_STATE";
 
 const GameContext = createContext({
   // States
   players: [],
   challenges: [],
   turns: [],
+  lastAdPlayer: undefined,
+  lastAdTime: new Date().getTime(),
   // Handlers
   onStart: (players) => {},
   onReset: () => {},
@@ -39,6 +42,12 @@ function reducer(state, action) {
       return { ...state, turns: [...state.turns, action.turn] };
     case RESET_GAME:
       return { players: [], challenges: [], turns: [] };
+    case UPDATE_AD_STATE:
+      return {
+        ...state,
+        lastAdPlayer: action.adPlayer,
+        lastAdTime: action.adTime,
+      };
   }
 }
 
@@ -47,6 +56,8 @@ export default function GameProvider({ children }) {
     players: [],
     challenges: [...dummyChallenges],
     turns: [],
+    lastAdPlayer: undefined,
+    lastAdTime: new Date(),
   });
 
   const onStart = useCallback((players) => {
@@ -68,14 +79,37 @@ export default function GameProvider({ children }) {
 
   const getTurn = useCallback(
     (prevPlayer, prevChallenge) => {
-      // Get turn from turns & challenges & players
+      if (shouldShowAd()) {
+        const adPlayer = getRandomAdPlayer(prevPlayer);
+        dispatch({
+          type: UPDATE_AD_STATE,
+          adUser: adPlayer,
+          adTime: new Date().getTime(),
+        });
+        return { player: adPlayer, ad: true };
+      }
+
       const nextPlayer = getNextPlayer(prevPlayer);
       const nextChallenge = getNextChallenge(nextPlayer, prevChallenge);
 
       return { player: nextPlayer, challenge: nextChallenge };
     },
-    [state.challenges, state.players, state.turns]
+    [
+      state.challenges,
+      state.players,
+      state.turns,
+      state.lastAdUser,
+      state.lastAdTime,
+    ]
   );
+
+  const shouldShowAd = () => {
+    const fiveMinutes = 5 * 60 * 1000;
+    if (new Date().getTime() - state.lastAdTime >= fiveMinutes) {
+      return true;
+    }
+    return false;
+  };
 
   const getNextPlayer = (current) => {
     if (current === undefined) return state.players[0];
@@ -86,6 +120,14 @@ export default function GameProvider({ children }) {
     } else {
       return state.players[currentIndex + 1];
     }
+  };
+
+  const getRandomAdPlayer = (currentPlayer) => {
+    let availablePlayers = state.players.filter(
+      (p) => p !== currentPlayer && p !== state.lastAdUser
+    );
+    const randomIndex = Math.floor(Math.random() * availablePlayers.length);
+    return availablePlayers[randomIndex];
   };
 
   const getNextChallenge = (player, prevChallenge) => {

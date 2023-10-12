@@ -8,7 +8,7 @@ import TextCard from "./ui/TextCard";
 import { defaultStyles } from "../constants/default-styles";
 
 const AdPenalty = ({ onSuccess, player }) => {
-  // deberia manejar el add
+
   const onConfirm = () => {
     onSuccess();
   };
